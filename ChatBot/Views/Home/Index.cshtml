@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Chat";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Home/Index.css" asp-append-version="true" />
+}
+@section Scripts
+{
+    <script src="~/js/Home/Index.js" asp-append-version="true"></script>
+}
+
+<div id="page" name="page">
+    <div id="content" name="content">
+        <div id="responses" name="responses">
+            <div id="history" name="history">
+            </div>
+        </div>
+        <div id="prompt-container" name="prompt-container" class="stable-element">
+            <textarea id="input" name="input"></textarea>
+            <input type="button" id="send" name="send" />
+        </div>
+    </div>
+</div>

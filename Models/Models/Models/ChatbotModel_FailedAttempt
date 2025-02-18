@@ -1,0 +1,112 @@
+﻿using Microsoft.ML;
+using Microsoft.ML.Trainers;
+using ModelsMl.Data.Tables;
+using ModelsMl.Models.Data.SourceData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace ModelsMl.Models.Models
+{
+    internal abstract class ChatbotModel<TIn, TOut, TInput>
+        where TIn : IEnumerable<ISourceData>
+        where TOut : class, IEnumerable<object>, new()
+        where TInput : class, new()
+    {
+        private string _modelName { get; init; }
+        private MLContext _context { get; init; }
+        private ITransformer? _model { get; set; }
+
+        public ChatbotModel()
+        {
+            this._modelName = InitializePath();
+            this._context = new MLContext();
+
+
+            string modelPath = this.GetModelPath();
+            this._model = File.Exists(modelPath)
+                ? this._context.Model.Load(this.GetModelPath(), out _)
+                : null;
+        }
+        protected virtual string InitializePath()
+        {
+            return this.GetType().Name;
+        }
+        protected abstract IEstimator<ITransformer> GetTrainingPipeline(MLContext context);
+        protected abstract TOut Filter(TOut origin);
+        public void TrainAndSave(TIn input)
+        {          
+            var trainingData = this._context.Data.LoadFromEnumerable(this.GetPairs(input));
+
+            var pipeline = GetTrainingPipeline(this._context);
+            _model = pipeline.Fit(trainingData);
+
+            this._context.Model.Save(_model, trainingData.Schema, this.GetModelPath());
+        }
+        
+        public TOut Predict(TInput input)
+        {
+            var modifiedIput = this.HandleInput(input);
+
+            var inputDataView = this._context.Data.LoadFromEnumerable(modifiedIput);
+
+            var prediction = this._model.Transform(inputDataView);
+
+            var collectionPrediction = this._context.Data.CreateEnumerable<TOut>(prediction, reuseRowObject: false).First();
+
+            var result = this.Filter(collectionPrediction);
+
+            return result;
+        }
+
+        private string GetModelPath()
+        {
+            return Path.Combine(MlRootPath, _modelName, $"{_modelName}.AI");
+        }
+        protected virtual IEnumerable<TInput> HandleInput(TInput input)
+        {
+            return [input];
+        }
+        protected virtual IEnumerable<InputDataPair> GetPairs(TIn input)
+        {
+            List<InputDataPair> result = new List<InputDataPair>();
+            foreach(var sourceData in input)
+            {
+                result.AddRange(sourceData.ToPairs());
+            }
+            return result;
+        }
+
+
+        protected static string MlRootPath =
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MachineLearningModel");
+        public static void EnsureDirectoryExists()
+        {
+            if (!Directory.Exists(MlRootPath))
+            {
+                Directory.CreateDirectory(MlRootPath);
+            }
+
+            var assembly = Assembly.GetAssembly(typeof(ChatbotModel<,,>));
+            var allTypes = assembly.GetTypes();
+            var derivedTypes = allTypes
+                .Where(t => t.IsSubclassOf(typeof(ChatbotModel<,,>)))
+                .ToList();
+
+            foreach (var type in derivedTypes)
+            {
+                string path = Path.Combine(MlRootPath, type.Name);
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+            }
+
+        }
+
+    }
+}

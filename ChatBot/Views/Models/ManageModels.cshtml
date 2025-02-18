@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Data";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Models/ManageModels.css" asp-append-version="true" />
+}
+@section Scripts
+{
+    <script src="~/js/Models/ManageModels.js" asp-append-version="true"></script>
+}
+
+<div id="content">
+    <div class="container">
+        <form class="form" id="backupForm">
+            <h2>Backup models</h2>
+            <label for="backupName">Backup name:</label>
+            <input type="text" id="backupName" name="backupName" required>
+            <button type="submit">Backup</button>
+        </form>
+
+        <form class="form" id="restoreForm">
+            <h2>Restore models</h2>
+            <label for="restoreModels">Select model:</label>
+            <select id="restoreModels" name="restoreModels">
+            </select>
+            <button type="submit">Restore</button>
+        </form>
+
+        <form class="form" id="clearForm">
+            <h2>Clear models</h2>
+            <p class="warning">This will remove currently trained models!</p>
+            <button type="submit" class="danger">Clear</button>
+        </form>
+    </div>
+</div>

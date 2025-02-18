@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Data";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Models/TrainModels.css" asp-append-version="true" />
+}
+@section Scripts
+{
+    <script src="~/js/Models/TrainModels.js" asp-append-version="true"></script>
+}
+
+<div id="content">
+    <div class="container">
+        <form class="form" id="trainForm">
+            <h2>Train model</h2>
+            <p class="info-text">This will train active model with unloaded data in database.</p>
+            <button type="submit">Train model</button>
+        </form>
+
+        <form class="form" id="retrainForm">
+            <h2>Retrain model</h2>
+            <p class="info-text">This will completely retrain all models.</p>
+            <button type="submit">Retrain model</button>
+        </form>
+    </div>
+</div>

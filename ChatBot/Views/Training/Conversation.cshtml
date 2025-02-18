@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "TrainEmotions";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Training/Training_General.css" asp-append-version="true" />
+}
+@section Scripts
+{
+    <script src="~/js/Training/Training_General.js" asp-append-version="true"></script>
+    <script src="~/js/Training/Conversation.js" asp-append-version="true"></script>
+}
+<div class="form-container">
+    <form id="mainForm">
+
+        <div class="form-group output-container" id="inputFields">
+            <label for="inputFields">Input:</label>
+            <div class="output-field">
+                <input type="text" name="Input" placeholder="Enter value" required>
+            </div>
+        </div>
+
+
+        <div class="form-group output-container" id="intendFields">
+            <label for="intendFields">Intends:</label>
+            <div class="output-field">
+                <input type="text" name="Intends[]" placeholder="Enter value" required>
+            </div>
+            <button type="button" id="addIntend">Add Intend</button>
+        </div>
+
+        <div class="form-group output-container" id="purposeFields">
+            <label for="purposeFields">Purposes:</label>
+            <div class="output-field">
+                <input type="text" name="Purposes[]" placeholder="Enter value" required>
+            </div>
+            <button type="button" id="addPurpose">Add Purpose</button>
+        </div>
+
+        <div class="form-group output-container" id="emotionFields">
+            <label for="emotionFields">Emotions:</label>
+            <div class="output-field">
+                <input type="text" name="Emotions[]" placeholder="Enter value" required>
+            </div>
+            <button type="button" id="addEmotion">Add Emotion</button>
+        </div>
+
+        <div class="form-group output-container" id="formatFields">
+            <label for="formatFields">Format:</label>
+            <div class="output-field">
+                <input type="text" name="Format" placeholder="Enter value" required>
+            </div>
+        </div>
+
+        <div class="form-group output-container" id="informationFields">
+            <label for="informationFields">Informations:</label>
+            <div class="output-field">
+                <input type="text" name="Informations[]" placeholder="Enter value" required>
+            </div>
+            <button type="button" id="addInformations">Add Information</button>
+        </div>
+
+        <div class="form-group output-container" id="outputFields">
+            <label for="outputFields">Output:</label>
+            <div class="output-field">
+                <input type="text" name="Output" placeholder="Enter value" required>
+            </div>
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+</div>

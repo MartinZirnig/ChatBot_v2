@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Data";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Database/ManageDatabase.css" asp-append-version="true" />
+}
+@section Scripts
+{
+    <script src="~/js/Database/ManageDatabase.js" asp-append-version="true"></script>
+}
+
+<div id="content">
+    <div class="container">
+        <form class="form" id="backupForm">
+            <h2>Backup database</h2>
+            <label for="backupName">Backup name:</label>
+            <input type="text" id="backupName" name="backupName" required>
+            <button type="submit">Backup</button>
+        </form>
+
+        <form class="form" id="restoreForm">
+            <h2>Restore database</h2>
+            <label for="restoreDB">Select database:</label>
+            <select id="restoreDB" name="restoreDB">
+            </select>
+            <button type="submit">Restore</button>
+        </form>
+
+        <form class="form" id="clearForm">
+            <h2>Clear database</h2>
+            <p class="warning">This will remove all data from database!</p>
+            <p class="warning">It also create backup!</p>
+            <button type="submit" class="danger">Clear</button>
+        </form>
+    </div>
+</div>

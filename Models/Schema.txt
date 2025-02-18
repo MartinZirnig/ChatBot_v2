@@ -1,0 +1,14 @@
+﻿-> Input
+
+
+Input -> Intend[] // Information gather/talking ...
+Input -> Purpose[] // What does client want to know
+Input -> Emotions[] // Which emotions are detected
+
+Input + Emotions[] -> Format // Format of final response
+Intend[] + Purpose[] -> Information[] // Result information
+
+Format + Emotion[] + Information[] -> Output // Final result
+
+
+<- Output

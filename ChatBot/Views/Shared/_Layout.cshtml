@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"]</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Shared/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ChatBot.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ChatBot</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Chat</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" id="navDropdown" role="button" data-bs-toggle="dropdown"
+                               asp-area="" asp-controller="Home" asp-action="Training">
+                                Training
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Training" asp-action="Conversation">Conversations</a></li>
+                                <li><a class="dropdown-item" asp-controller="Training" asp-action="Emotions">Emotions</a></li>
+                                <li><a class="dropdown-item" asp-controller="Training" asp-action="Formats">Formats</a></li>
+                                <li><a class="dropdown-item" asp-controller="Training" asp-action="Informations">Informations</a></li>
+                                <li><a class="dropdown-item" asp-controller="Training" asp-action="Intends">Intends</a></li>
+                                <li><a class="dropdown-item" asp-controller="Training" asp-action="Outputs">Outputs</a></li>
+                                <li><a class="dropdown-item" asp-controller="Training" asp-action="Purposes">purposes</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" id="navDropdown" role="button" data-bs-toggle="dropdown">
+                                Database
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Database" asp-action="TrainData">TrainData</a></li>
+                                <li><a class="dropdown-item" asp-controller="Database" asp-action="ManageDatabase">Manage</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" id="navDropdown" role="button" data-bs-toggle="dropdown">
+                                Models
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Models" asp-action="ManageModels">Manage</a></li>
+                                <li><a class="dropdown-item" asp-controller="Models" asp-action="TrainModels">Train</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="root" class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <!--
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - ChatBot - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Shared/site.js" asp-append-version="true"></script>
+    <script src="~/js/Shared/DTOs.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

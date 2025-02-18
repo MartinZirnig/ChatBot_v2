@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Data";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Database/TrainData.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Database/GeneratedComponents.css" asp-append-version="true" />
+}
+@section Scripts
+{
+    <script src="~/js/Database/ComponentsGenerator.js" asp-append-version="true"></script>
+    <script src="~/js/Database/TrainData.js" asp-append-version="true"></script>
+}
+
+
+<div class="main-container">
+    <div class="options">
+        <label>
+            <input type="checkbox" id="showIgnored"> Show Ignored
+        </label>
+        <label>
+            <input type="checkbox" id="showLoaded"> Show Loaded
+        </label>
+        <div class="number-inputs">
+            <input type="number" id="topValue" placeholder="Top value">
+            <input type="number" id="skipValue" placeholder="Skip value">
+        </div>
+        <select id="contentSelect">
+        </select>
+        <button id="fetchButton">Fetch Data</button>
+    </div>
+
+    <div class="data-container" id="dataContainer">
+    </div>
+
+
+</div>

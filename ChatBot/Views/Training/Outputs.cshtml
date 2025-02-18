@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "TrainOutput";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Training/Training_General.css" asp-append-version="true" />
+}
+@section Scripts
+{
+    <script src="~/js/Training/Training_General.js" asp-append-version="true"></script>
+    <script src="~/js/Training/Outputs.js" asp-append-version="true"></script>
+}
+<div class="form-container">
+    <form id="mainForm">
+        <div class="form-group output-container" id="formatField">
+            <label for="formatField">Format:</label>
+            <div class="output-field">
+                <input type="text" name="Format" placeholder="Enter value" required>
+            </div>
+        </div>
+
+        <div class="form-group output-container" id="emotionsFields">
+            <label for="emotionsFields">Emotions:</label>
+            <div class="output-field">
+                <input type="text" name="Emotions[]" placeholder="Enter value" required>
+            </div>
+        </div>
+        <button type="button" id="appendEmotion">Add Emotion</button>
+
+        <div class="form-group output-container" id="informationsFields">
+            <label for="informationsField">Informations:</label>
+            <div class="output-field">
+                <input type="text" name="Informations[]" placeholder="Enter value" required>
+            </div>
+        </div>
+        <button type="button" id="appendInformations">Add Information</button>
+
+        <div class="form-group output-container" id="outputField">
+            <label for="outputField">Output:</label>
+            <div class="output-field">
+                <input type="text" name="Output" placeholder="Enter value" required>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "TrainInformations";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Training/Training_General.css" asp-append-version="true" />
+}
+@section Scripts
+{
+    <script src="~/js/Training/Training_General.js" asp-append-version="true"></script>
+    <script src="~/js/Training/Informations.js" asp-append-version="true"></script>
+}
+<div class="form-container">
+    <form id="mainForm">
+        <div class="form-group output-container" id="intendsFields">
+            <label for="intendsField">Intends:</label>
+            <div class="output-field">
+                <input type="text" name="Intends[]" placeholder="Enter value" required>
+            </div>
+        </div>
+        <button type="button" id="appendIntend">Add Intend</button>
+
+        <div class="form-group output-container" id="purposeFields">
+            <label for="purposeField">Purpose:</label>
+            <div class="output-field">
+                <input type="text" name="Purposes[]" placeholder="Enter value" required>
+            </div>
+        </div>
+        <button type="button" id="appendPurpose">Add Purpose</button>
+
+        <div class="form-group output-container" id="informationFields">
+            <label for="informationField">Informations:</label>
+            <div class="output-field">
+                <input type="text" name="Informations[]" placeholder="Enter value" required>
+            </div>
+        </div>
+        <button type="button" id="appendInformations">Add Information</button>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>

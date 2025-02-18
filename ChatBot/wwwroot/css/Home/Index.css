@@ -1,0 +1,57 @@
+﻿#content {
+    background-color: gray;
+
+    border-color: black;
+    border: dotted;
+    margin: auto 0px;
+    width: 90%;
+}
+#prompt-container {
+    width: 100%;
+    height: 3vw;
+
+    display: flex;
+    ruby-align: space-between;
+}
+
+textarea {
+    width: 94%;
+    height: 100%;
+    resize: none;
+}
+
+input {
+    width: 5%;
+    height: 100%;
+}
+p {
+    font: 800;
+    font-style: oblique;
+}
+code {
+    color: white;
+    font-size: large;
+}
+
+.prompt-box {
+    padding: 2%;
+    width: 70%;
+    margin: 0.5%;
+    margin-left: 1%;
+    background-color: darkgray;
+    height: 70%;
+
+    border-radius: 10px;
+}
+.responese-box {
+    padding: 2%;
+    width: 70%;
+    margin: 0.5%;
+    margin-left: 29%;
+    background-color: darkgray;
+
+    border-radius: 10px;
+}
+.stable-element {
+    position: relative;
+}
